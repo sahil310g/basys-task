@@ -10,17 +10,23 @@ Created a chatBot that provides information based on the form present in the Dat
 
 .env file
 
-```DATABASE_URL = "MongoDB connection string"```
-```OPENAI_API_KEY = "OpenAI API Key"```
+```
+DATABASE_URL = "MongoDB connection string"
+OPENAI_API_KEY = "OpenAI API Key"
+```
 
 - To run the backend server
 
-```cd backend```
-```npm init```
-```nodemon index.js```
+```
+cd backend
+npm init
+nodemon index.js
+```
 
 ***Frontend Setup***
 
-```cd frontend```
-```npm install```
-```npm start```
+```
+cd frontend
+npm install
+npm start
+```
