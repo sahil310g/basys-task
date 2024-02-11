@@ -40,7 +40,7 @@ app.post('/api/message', async (req, res) => {
     var ID = await idParser(message);
 
     var response = { "index": ind, ...ID };
-    var text;
+    var text="";
     var policyID = ID.policyID;
     var patientID = ID.patientID;
 
@@ -51,10 +51,15 @@ app.post('/api/message', async (req, res) => {
     }
 
     if (policyID === null || policyID === undefined || policyID === "null") {
+        if(typeof patientID !== "string")
+            patientID = patientID.toString();
         const existingPatient = await patient.findOne({ patient_id: patientID });
         if (existingPatient) {
             policyID = existingPatient._doc.policy_id;
             console.log(policyID);
+            var result = existingPatient._doc;
+            text = `Patient Details:\n Patient ID : ${result.patient_id} \n Name : ${result.name} \n Email : ${result.email} \n Phone number : ${result.phone} \n Gender : ${result.gender}\n`;
+        
         }
         else {
             res.json({ "message": "Patient ID not found" });
@@ -71,7 +76,7 @@ app.post('/api/message', async (req, res) => {
             return { "message": "Policy ID not found" };
         }
         var result = existingPolicy._doc;
-        text = `Policy ID : ${result.policy_id} \n Name of the policy : ${result.name} \n Description of the policy : ${result.description} \n`;
+        text += `Policy Details:\n Policy ID : ${result.policy_id} \n Name of the policy : ${result.name} \n Description of the policy : ${result.description} \n`;
         res.json({ message: text });
         return ({ message: text });
     }
