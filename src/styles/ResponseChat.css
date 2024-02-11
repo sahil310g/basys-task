@@ -12,6 +12,7 @@
   
   .responseChat .message {
     display: flex;
+    flex-direction: column;
     width: 75%;
     height: fit-content;
     padding: 1rem;

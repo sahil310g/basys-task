@@ -8,20 +8,16 @@ import axios from "axios";
 function ChatBox({ chatList, setChatList }) {
   const [text, setText] = useState("");
 
-  const handleSubmit = async () => {
-    console.log(text);
-    const newList = [...chatList, { role: "user", message: text }];
-    setChatList(newList);
-    
+  const getResponse = async (input) => {
     try {
       const response = await axios.post("http://localhost:4000/api/message", {
-        message: text,
+        message: input,
       });
       const newList = [
         ...chatList,
         {
           role: "user",
-          message: text,
+          message: input,
         },
         {
           role: "bot",
@@ -35,6 +31,45 @@ function ChatBox({ chatList, setChatList }) {
       // console.log(newList);
     } catch (error) {
       console.error("Error:", error.message);
+    }
+  };
+
+  const handleSubmit = async () => {
+    console.log(text);
+    const newList = [...chatList, { role: "user", message: text }];
+    setChatList(newList);
+    getResponse(text);
+  };
+
+  
+
+  const handleClick = () => {
+    // Prompt the user for input
+    const userInput = window.prompt("Enter the policy ID:");
+
+    // Handle the user input
+    if (userInput !== null) {
+      var input = `Policy breakdown for policy ID ${userInput}`;
+      setChatList([...chatList, {role:"user", message : input}]);
+      getResponse(input);
+
+    } else {
+      alert("No input provided");
+    }
+  };
+
+  const handleClick2 = () => {
+    // Prompt the user for input
+    const userInput = window.prompt("Enter the policy ID:");
+
+    // Handle the user input
+    if (userInput !== null) {
+      var input = `Missing information for policy ID ${userInput}`;
+      setChatList([...chatList, {role:"user", message : input}]);
+      getResponse(input);
+
+    } else {
+      alert("No input provided");
     }
   };
 
@@ -76,6 +111,11 @@ function ChatBox({ chatList, setChatList }) {
           placeholder="Enter your message"
         />
         <button onClick={handleSubmit}>➤</button>
+      </div>
+
+      <div className="buttons">
+        <button onClick={handleClick}>Policy Breakdown</button>
+        <button onClick={handleClick2}>Missing information</button>
       </div>
     </div>
   );

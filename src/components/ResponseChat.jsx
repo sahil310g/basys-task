@@ -2,6 +2,7 @@ import React from "react";
 import "../styles/ResponseChat.css";
 
 function ResponseChat({ text }) {
+  const lines = text.split("\n");
   return (
     <div className="responseChat">
       {text && (
@@ -27,7 +28,11 @@ function ResponseChat({ text }) {
                 />
               </svg>
             </div>
-            <div className="message">{text}</div>
+            <div className="message">
+              {lines.map((line, index) => (
+                <p key={index}>{line}</p>
+              ))}
+            </div>
           </div>
         </>
       )}

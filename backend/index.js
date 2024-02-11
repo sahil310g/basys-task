@@ -86,7 +86,7 @@ app.post('/api/message', async (req, res) => {
         }
         var result = existingPolicy._doc;
 
-        text = `Missing information for policy ${policyID} are: `;
+        text = `Missing information for Policy ID ${policyID} are:`;
 
         var cnt = 0;
 
@@ -95,13 +95,17 @@ app.post('/api/message', async (req, res) => {
                 const value = result[key];
                 // Check if the value is an empty string
                 if (value === "") {
-                    text += `${key}, `;
+                    text += ` ${key},`;
                     cnt++;
                 }
             }
         }
+
         if(cnt==0) {
             text = `No information is missing for policy ID ${policyID}`;
+        }
+        else{
+            text = text.slice(0, -1) + ".";
         }
         res.json({ message: text });
         return ({ message: text });
