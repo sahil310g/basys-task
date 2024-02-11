@@ -10,7 +10,6 @@ const formSchema = new mongoose.Schema({
     email: {type:String},
     gender: {type:String},
     phone: {type:String},
-    address: {type:String},
     policy_id: {type:String, required:true},
     illnesses: [illnessSchema]
 })

@@ -9,7 +9,7 @@ const openAPI = new OpenAI({
 async function idParser(input){
     const completion = await openAPI.chat.completions.create({
         messages: [
-        { "role": "system", "content": "Based on input in a chatbot, just a json response with policyID and patientID from the text input. In case any of them is not present, write null for it." },
+        { "role": "system", "content": "Based on input in a chatbot, just a json response with policyID and patientID from the text input. In case any of them is not present, write null for it. If none of ID is present return 'null' for both" },
         { "role": "user", "content": input }],
         model: "gpt-3.5-turbo",
     });

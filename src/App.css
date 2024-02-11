@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+
+:root {
+  --primBlue: #d4dcf1;
+  --secBlue: rgb(35, 50, 74);
+  --white: #ffffff;
+  --primText: #23324a;
+  --secText: #fff;
+}

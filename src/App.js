@@ -1,7 +1,4 @@
-import logo from './logo.svg';
 import './App.css';
-import ResponseChat from './components/ResponseChat';
-import SentChat from './components/SentChat';
 import ChatBox from './components/ChatBox';
 import { useState } from 'react';
 

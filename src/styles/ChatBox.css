@@ -7,8 +7,9 @@
 }
 
 .chat-header{
-    background-color: green;
+    background-color: var(--secBlue);
     width: 70%;
+    height: 4rem;
     padding: 0 2rem;
     border-radius: 20px 20px 0 0;
     display: flex;
@@ -18,8 +19,14 @@
 
 }
 
-.chat-header img{
-    height: 4rem;
+img{
+    height: 5rem;
+}
+
+.chat-header h1{
+    color: var(--white);
+    font-size: 2rem;
+    margin: 0;
 }
 
 .text-area{
@@ -37,7 +44,7 @@
     padding: 0.5rem;
 }
 .chats{
-    background-color: green;
+    background-color: var(--primBlue);
     height: 60%;
     width: 70%;
     overflow-y: auto;
